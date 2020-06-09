@@ -358,6 +358,8 @@ parentViewController:(UIViewController*)parentViewController
 
 //--------------------------------------------------------------------------
 - (void)openDialog {
+    [self.viewController setModalPresentationStyle:UIModalPresentationFullScreen];
+    
     [self.parentViewController
      presentViewController:self.viewController
      animated:self.isTransitionAnimated completion:nil
@@ -368,7 +370,7 @@ parentViewController:(UIViewController*)parentViewController
 - (void)barcodeScanDone:(void (^)(void))callbackBlock {
     self.capturing = NO;
     [self.captureSession stopRunning];
-    [self.parentViewController dismissViewControllerAnimated:self.isTransitionAnimated completion:callbackBlock];
+    // [self.parentViewController dismissViewControllerAnimated:self.isTransitionAnimated completion:callbackBlock];
 
 
     AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
